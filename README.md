@@ -12,7 +12,7 @@ boseCSSP.setup("192.168.7.56");
 ~~~
 ### control
 
-#### recal parameters
+#### recall parameters
 ~~~
 ofxBoseCSSP boseCSSP;
 boseCSSP.setup("192.168.7.56");
