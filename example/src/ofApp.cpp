@@ -53,11 +53,11 @@ void ofApp::keyPressed(int key){
     
     if(key == OF_KEY_UP){
         //gain up (default 0.5db) of "Cneter PC" gain module
-        boseCSSP.setGain("Center PC", GainControl_up);
+        boseCSSP.setGain("Eco Mic", GainControl_up);
     }
     if(key == OF_KEY_DOWN){
         //gain down (default 0.5db) of "Cneter PC" gain module
-        boseCSSP.setGain("Center PC", GainControl_down);
+        boseCSSP.setGain("Eco Mic", GainControl_down);
     }
 }
 

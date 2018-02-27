@@ -20,7 +20,7 @@ ofxBoseCSSP::~ofxBoseCSSP()
 
 bool ofxBoseCSSP::setup(string host, int port)
 {
-    if(host == "") return;
+    if(host == "") return false;
     
     _host = host;
     _port = port;
@@ -36,6 +36,8 @@ bool ofxBoseCSSP::setup(string host, int port)
         ofLogVerbose() << "ofxBoseCSSP : Failed to connect to " << _host;
         return false;
     }
+    
+    return true;
 }
 
 
