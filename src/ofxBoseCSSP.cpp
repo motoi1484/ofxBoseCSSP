@@ -77,11 +77,11 @@ void ofxBoseCSSP::setGain(string moduleName, int dir, float step)
     
 }
 
-void ofxBoseCSSP::recall(int presetIndex)
+void ofxBoseCSSP::recall(unsigned char presetIndex)
 {
-    int index = presetIndex;
+    unsigned char index = presetIndex;
     
-    msgTx = "SS " + ofToString(presetIndex) + "\r";
+    msgTx = "SS " + ofToHex(presetIndex) + "\r";
     this->sendCommand(msgTx);
     
     msgTx = "GS\r";
@@ -89,7 +89,7 @@ void ofxBoseCSSP::recall(int presetIndex)
     
     //query call preset
     int queryIndex = -1;
-    sscanf(msgRx.c_str(), "S %d\r", &queryIndex);
+    sscanf(msgRx.c_str(), "S %X\r", &queryIndex);
     
     if(queryIndex != presetIndex){
         ofLogError() << "ofxBoseCSSP : Failed to call preset";

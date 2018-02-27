@@ -26,7 +26,7 @@ public:
     
     bool setup(string host, int port=10055);
     
-    void recall(int presetIndex = 0);
+    void recall(unsigned char presetIndex = 0);
     
     void setGain(string moduleName, int dir, float step=0.5);
     

@@ -38,6 +38,19 @@ void ofApp::keyPressed(int key){
         boseCSSP.recall(4);
     }
     
+    if(key == '8'){
+        //recall paramset 1
+        boseCSSP.recall(12);
+    }
+    if(key == '9'){
+        //recall paramset 1
+        boseCSSP.recall(13);
+    }
+    if(key == '0'){
+        //recall paramset 1
+        boseCSSP.recall(14);
+    }
+    
     if(key == OF_KEY_UP){
         //gain up (default 0.5db) of "Cneter PC" gain module
         boseCSSP.setGain("Center PC", GainControl_up);
