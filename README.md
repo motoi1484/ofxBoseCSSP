@@ -1,6 +1,7 @@
 # ofxBoseCSSP
 
 ## Bose Control Space Serial protocol addon
+[Bose Control Space](https://probose.jp/product/controlspace-esp-00-series-ii/)
 
 ## Usage
 
