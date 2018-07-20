@@ -109,8 +109,14 @@ void ofxBoseCSSP::sendAndGetResponse(string tx, string& rx)
     unsigned long s = ofGetElapsedTimeMillis();
     rx = "";
     while(ofGetElapsedTimeMillis() - s < 1000){
-        rx = tcpClient.receive();
-        if(rx != "") break;
+        if(tcpClient.isConnected()){
+            rx = tcpClient.receive();
+            if(rx != "") break;
+        }
+        else{
+            rx = "";
+            break;
+        }
     }
     if(rx != ""){
         auto pos = rx.find("\x06");
