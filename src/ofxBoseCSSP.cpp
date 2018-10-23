@@ -33,7 +33,7 @@ bool ofxBoseCSSP::setup(string host, int port)
         return true;
     }
     else{
-        ofLogVerbose() << "ofxBoseCSSP : Failed to connect to " << _host;
+        ofLogError() << "ofxBoseCSSP : Failed to connect to " << _host;
         return false;
     }
     
@@ -71,6 +71,9 @@ void ofxBoseCSSP::setGain(string moduleName, int dir, float step)
             //set new gain
             msgTx = "SA" + _modName + ">1=" + ofToString(newGain) + "\r";
             this->sendCommand(msgTx);
+        }
+        else{
+            ofLogError() << "ofxBoseCSSP : Error recv msg :  " << msgRx;
         }
     }
     else{
@@ -115,6 +118,7 @@ void ofxBoseCSSP::sendAndGetResponse(string tx, string& rx)
             if(rx != "") break;
         }
         else{
+            ofLogError() << "tcp is not connected";
             rx = "";
             break;
         }
@@ -125,6 +129,9 @@ void ofxBoseCSSP::sendAndGetResponse(string tx, string& rx)
             rx.replace(pos, 1, "");
         }
         ofLogVerbose() << "ofxBoseCSSP : <-- " << rx;
+    }
+    else{
+        ofLogError() << "recv message is empty";
     }
 }
 
