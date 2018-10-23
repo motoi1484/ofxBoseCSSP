@@ -62,15 +62,16 @@ void ofxBoseCSSP::setGain(string moduleName, int dir, float step)
     //get current gain level
     if(msgRx != ""){
         ss = ofSplitString(msgRx, ">");
-        sscanf(ss[1].c_str(), "1=%f", &currentGain);
+        if(ss.size() >= 2){
+            sscanf(ss[1].c_str(), "1=%f", &currentGain);
         
-        if(dir == GainControl_up) newGain = currentGain + step;
-        else newGain = currentGain - step;
+            if(dir == GainControl_up) newGain = currentGain + step;
+            else newGain = currentGain - step;
         
-        //set new gain
-        msgTx = "SA" + _modName + ">1=" + ofToString(newGain) + "\r";
-        this->sendCommand(msgTx);
-        
+            //set new gain
+            msgTx = "SA" + _modName + ">1=" + ofToString(newGain) + "\r";
+            this->sendCommand(msgTx);
+        }
     }
     else{
         ofLogError() << "ofxBoseCSSP : Failed to get current gain of " << moduleName;
