@@ -94,16 +94,20 @@ void ofxBoseCSSP::recall(unsigned char presetIndex)
     this->sendAndGetResponse(msgTx, msgRx);
     
     //query call preset
-    int queryIndex = -1;
-    sscanf(msgRx.c_str(), "S %X\r", &queryIndex);
+    if(msgRx != ""){
+        int queryIndex = -1;
+        sscanf(msgRx.c_str(), "S %X\r", &queryIndex);
     
-    if(queryIndex != presetIndex){
-        ofLogError() << "ofxBoseCSSP : Failed to call preset";
+        if(queryIndex != presetIndex){
+            ofLogError() << "ofxBoseCSSP : Failed to call preset";
+        }
+        else{
+            ofLogVerbose() << "ofxBoseCSSP : Success to change preset to " << queryIndex;
+        }
     }
     else{
-        ofLogVerbose() << "ofxBoseCSSP : Success to change preset to " << queryIndex;
+        ofLogError() << "ofxBoseCSSP : Failed to call preset, msgRx is empty";
     }
-    
 }
 
 void ofxBoseCSSP::sendAndGetResponse(string tx, string& rx)
